@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8"/>
+	<script src="wasm_exec.js"></script>
+	<script>
+	  const go = new Go();
+	  WebAssembly.instantiateStreaming(fetch("filterdemo.wasm"), go.importObject).then((result) => {
+	    go.run(result.instance);
+	  });
+	</script>
+        <style>
+        </style>
+    </head>
+  <body>
+    <p id="loading">Loading... Please wait...</p>
+    <h3>Flags</h3>
+    <select name="filterType" id="filterType">
+      <option value="0">--include</option>
+      <option value="1">--exclude</option>
+      <option value="2">--filter</option>
+      <option value="3">--files-from</option>
+    </select>
+    <textarea rows="4" cols="50" name="flags" id="flags"></textarea>
+    <button id="filter">Filter</button>
+    <h3>Files</h3>
+    <textarea rows="4" cols="50" name="files" id="files"></textarea>
+    <h3>Output</h3>
+    <pre id="results"></pre>
+  </body>
+</html>

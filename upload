@@ -1,0 +1,4 @@
+#!/bin/sh
+./build
+rclone -P copy --include="*.{wasm,js,css,html}" . rclone-org:/var/www/filterdemo.rclone.org
+echo See https://filterdemo.rclone.org/
