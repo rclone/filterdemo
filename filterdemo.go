@@ -121,7 +121,7 @@ func changed(this js.Value, args []js.Value) interface{} {
 	fileNames := lines(files.Get("value").String())
 	var out strings.Builder
 	for _, fileName := range fileNames {
-		if f.Include(fileName, 50, time.Now()) {
+		if f.Include(fileName, 50, time.Now(), nil) {
 			out.WriteString(fileName)
 			out.WriteRune('\n')
 		}
